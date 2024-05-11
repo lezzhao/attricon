@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs'
 import { locate } from '@iconify/json'
 import type { IconifyJSON } from '@iconify/types'
-import collections from '../collection.json'
+import collections from '../../../collection.json'
 
 const collectionCache = new Map<string, IconifyJSON>()
 

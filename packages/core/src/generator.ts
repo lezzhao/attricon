@@ -1,6 +1,6 @@
 import { loadIconCss } from './loader'
 
-export class IconGenerator {
+export class AttriconGenerator {
   private tokens = new Set<string>()
   private iconRE: RegExp
   public config: { prefix: string }

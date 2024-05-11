@@ -1,0 +1,39 @@
+{
+  "name": "@attricon/vite",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.1.0",
+  "description": "attricon vite",
+  "author": "lezzhao <zhaole.work@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/lezzhao/attricon/tree/main/packages/vite#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lezzhao/attricon/attricon",
+    "directory": "packages/vite"
+  },
+  "bugs": "https://github.com/lezzhao/attricon/attricon/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub"
+  },
+  "dependencies": {
+    "@attricon/core": "workspace:^",
+    "@rollup/pluginutils": "^5.1.0",
+    "magic-string": "^0.30.10"
+  }
+}

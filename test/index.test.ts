@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { IconGenerator, loadIconCss } from '../src'
+import { IconGenerator, loadIconCss } from '../packages/core/src'
 
 const code = `
     <i i-carbon-campsite />

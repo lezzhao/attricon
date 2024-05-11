@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import SimpleIcon from '../src/vite'
+import Attricon from '../packages/vite/src'
 
 export default defineConfig({
-  plugins: [vue(), SimpleIcon()],
+  plugins: [vue(), Attricon()],
 })

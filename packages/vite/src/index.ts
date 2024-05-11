@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto'
 import type { Plugin, ViteDevServer } from 'vite'
 import MagicString from 'magic-string'
-import { IconGenerator } from '../generator'
+import { AttriconGenerator } from '@attricon/core'
 
 export function getHash(input: string, length = 6) {
   return createHash('sha256')
@@ -13,7 +13,7 @@ export function getHash(input: string, length = 6) {
 const HOT_EVENT_PREFIX = 'icon:hmr'
 
 export default function simpleIcons(): Plugin[] {
-  const iconGenerator = new IconGenerator({ prefix: 'i-' })
+  const generator = new AttriconGenerator({ prefix: 'i-' })
   let server: ViteDevServer | undefined
   const tokens = new Set<string>()
   let cache = new Set<string>()
@@ -30,7 +30,7 @@ export default function simpleIcons(): Plugin[] {
       async transform(code, id) {
         if (id.includes('/.vite/'))
           return
-        const token = await iconGenerator.scan(code)
+        const token = await generator.scan(code)
         if (Array.isArray(token))
           token.forEach(t => tokens.add(t))
       },
@@ -41,7 +41,7 @@ export default function simpleIcons(): Plugin[] {
       async load(id) {
         if (id.includes('sicon.css')) {
           virtualId = id
-          const css = await iconGenerator.generate(tokens)
+          const css = await generator.generate(tokens)
           if (css) {
             hash = getHash(css)
             cache = new Set(Array.from(tokens))
@@ -60,7 +60,7 @@ export default function simpleIcons(): Plugin[] {
       async transform(code, id, options) {
         if (cache.size && tokens.size !== cache.size) {
           if (virtualId) {
-            const css = await iconGenerator.generate(tokens)
+            const css = await generator.generate(tokens)
             hash = getHash(css)
             cache = new Set(Array.from(tokens))
             const mod = await server!.moduleGraph.getModuleById(virtualId)
