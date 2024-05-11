@@ -1,17 +1,17 @@
 {
-  "name": "pkg-name",
+  "name": "attricon",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@9.1.0",
   "description": "_description_",
   "author": "lezzhao <zhaole.work@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/lezzhao/pkg-name#readme",
+  "homepage": "https://github.com/lezzhao/attricon#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lezzhao/pkg-name.git"
+    "url": "git+https://github.com/lezzhao/attricon.git"
   },
-  "bugs": "https://github.com/lezzhao/pkg-name/issues",
+  "bugs": "https://github.com/lezzhao/attricon/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
