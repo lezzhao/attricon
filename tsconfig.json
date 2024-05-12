@@ -4,11 +4,22 @@
     "lib": ["esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "paths": {
+      "@attricon/core": ["./packages/core/src/index.ts"],
+      "@attricon/vite": ["./packages/vite/src/index.ts"]
+    },
     "resolveJsonModule": true,
     "strict": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": [
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/client/**",
+    "**/playground/**"
+  ]
+
 }

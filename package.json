@@ -2,6 +2,7 @@
   "name": "@attricon/monorepo",
   "type": "module",
   "version": "0.0.0",
+  "private": true,
   "packageManager": "pnpm@9.1.0",
   "description": "_description_",
   "author": "lezzhao <zhaole.work@gmail.com>",
@@ -36,8 +37,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
+    "build": "pnpm run --filter=\"./packages/*\" --stream build",
+    "dev": "pnpm run --filter=\"./packages/*\" --parallel dev",
+    "clean": "rimraf packages/*/dist",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
