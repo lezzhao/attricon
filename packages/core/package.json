@@ -2,7 +2,7 @@
   "name": "@attricon/core",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.1.1",
   "description": "attricon core",
   "author": "lezzhao <zhaole.work@gmail.com>",
   "license": "MIT",
@@ -18,21 +18,21 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "dependencies": {
-    "@iconify/json": "^2.2.207",
+    "@iconify/json": "^2.2.210",
     "@iconify/utils": "^2.1.23",
     "fast-glob": "^3.3.2"
   }

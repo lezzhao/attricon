@@ -3,23 +3,29 @@
     "target": "esnext",
     "lib": ["esnext"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Bundler",
     "paths": {
       "@attricon/core": ["./packages/core/src/index.ts"],
       "@attricon/vite": ["./packages/vite/src/index.ts"]
     },
     "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
     "strict": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/src/*.d.ts"
+  ],
   "exclude": [
     "**/dist/**",
     "**/node_modules/**",
-    "**/client/**",
-    "**/playground/**"
+    "**/playground/**",
+    "**/client/**"
   ]
-
 }

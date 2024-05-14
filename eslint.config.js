@@ -5,11 +5,16 @@ export default antfu(
   {
     ignores: [
       // eslint ignore globs here
+      'playground/**',
     ],
   },
   {
+    files: [
+      '*.d.ts',
+    ],
     rules: {
-      // overrides
+      'unused-imports/no-unused-vars': 'off',
+      'eslint-comments/no-unlimited-disable': 'off',
     },
   },
 )
