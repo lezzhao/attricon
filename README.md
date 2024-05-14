@@ -10,6 +10,23 @@ Inspired by [unocss](https://unocss.dev/), Attricon is a util that allows you to
 
 <br/>
 
+## TODO
+- #### support vite pack mode
+- #### support custom icon
+- #### publish packages
+
+<br/>
+
+<br/>
+
+## Install
+
+```bash
+npm i @attricon/vite
+```
+
+<br/>
+
 ## Usage in vite
 
 ```ts
