@@ -71,22 +71,6 @@ export default function AttriconGlobalPlugin(): Plugin[] {
     {
       name: 'attricon:build',
       apply: 'build',
-      async transform(_code, _id, options) {
-        if (cache.size && tokens.size !== cache.size) {
-          for (const id of cssModule) {
-            const css = await generator.generate(tokens)
-            cache = new Set(Array.from(tokens))
-            const mod = await server!.moduleGraph.getModuleById(id)
-            if (mod) {
-              await server?.moduleGraph.updateModuleTransformResult(mod, {
-                code: css,
-                map: { mappings: '' },
-              }, options?.ssr || false)
-              server?.reloadModule(mod)
-            }
-          }
-        }
-      },
     },
   ]
 }
