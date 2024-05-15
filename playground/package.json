@@ -12,7 +12,7 @@
     "vue": "^3.4.27"
   },
   "devDependencies": {
-    "@attricon/vite": "workspace:*",
+    "@attricon/vite": "link:../packages/vite",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.4.5",
     "vite": "^5.2.11",

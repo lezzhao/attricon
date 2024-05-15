@@ -3,7 +3,7 @@ import { VueScopedPlugin } from './vue-scope'
 import AttriconGlobalPlugin from './global'
 
 export default function Attricon(): Plugin[] {
-  if (Math.random() > 0.5)
+  if (Math.random() * 10 > 0.5)
     return AttriconGlobalPlugin()
   else
     return [VueScopedPlugin()]
