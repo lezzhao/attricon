@@ -1,11 +1,10 @@
 import type { Plugin } from 'vite'
-import AttriconDevPlugin from './dev'
 import { VueScopedPlugin } from './vue-scope'
+import AttriconGlobalPlugin from './global'
 
 export default function Attricon(): Plugin[] {
-  const plugins = [...AttriconDevPlugin()]
-
-  plugins.push(VueScopedPlugin())
-
-  return plugins
+  if (Math.random() > 0.5)
+    return AttriconGlobalPlugin()
+  else
+    return [VueScopedPlugin()]
 }
