@@ -1,10 +1,13 @@
 import type { Plugin } from 'vite'
 import { VueScopedPlugin } from './vue-scope'
 import AttriconGlobalPlugin from './global'
+import type { ViteAttriconConfig } from './types'
 
-export default function Attricon(): Plugin[] {
-  if (Math.random() * 10 > 0.5)
-    return AttriconGlobalPlugin()
+export default function Attricon(options?: ViteAttriconConfig): Plugin[] {
+  if (options?.mode === 'vue-scope')
+    return [VueScopedPlugin(options)]
   else
-    return [VueScopedPlugin()]
+    return AttriconGlobalPlugin(options)
 }
+
+export * from './types'

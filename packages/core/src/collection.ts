@@ -2,13 +2,11 @@ import { promises as fs } from 'node:fs'
 import { locate } from '@iconify/json'
 import type { IconifyJSON } from '@iconify/types'
 import collections from '../../../collection.json'
+import type { CollectionInfo } from './types'
 
 const collectionCache = new Map<string, IconifyJSON>()
 
-export async function getCollection(icon: string): Promise<{
-  collection: IconifyJSON
-  name: string
-} | undefined> {
+export async function getCollection(icon: string): Promise<CollectionInfo> {
   const collection = collections.find(collection => icon.startsWith(collection))
   if (!collection)
     return undefined

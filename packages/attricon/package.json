@@ -1,0 +1,42 @@
+{
+  "name": "attricon",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.1.1",
+  "description": "attricon",
+  "author": "lezzhao <zhaole.work@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/lezzhao/attricon/attricon#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lezzhao/attricon/attricon"
+  },
+  "bugs": "https://github.com/lezzhao/attricon/attricon/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "default": "./dist/vite.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "load": "esno ./src/loader.ts",
+    "build": "unbuild",
+    "dev": "unbuild --stub"
+  },
+  "dependencies": {
+    "@attricon/core": "workspace:*",
+    "@attricon/vite": "workspace:*"
+  }
+}

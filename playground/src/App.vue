@@ -13,6 +13,7 @@ import Hello from './Hello.vue';
     <i i-carbon-asleep></i>
     <i i-carbon-number-2></i>
     <i i-carbon-number-0></i>
+    <i i-carbon-number-9></i>
   </div>
 </template>
 

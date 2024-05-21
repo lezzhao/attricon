@@ -1,10 +1,11 @@
 import type { Plugin } from 'vite'
 import { createFilter } from '@rollup/pluginutils'
+import type { AttriconConfig } from '@attricon/core'
 import { AttriconGenerator } from '@attricon/core'
 
-export function VueScopedPlugin(): Plugin {
+export function VueScopedPlugin(config?: AttriconConfig): Plugin {
   const filter = createFilter([/\.vue$/])
-  const attricon = new AttriconGenerator({ prefix: 'i-' })
+  const attricon = new AttriconGenerator(config)
 
   async function transformSFC(code: string) {
     const css = await attricon.scan(code, true)

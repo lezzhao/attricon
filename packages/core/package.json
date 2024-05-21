@@ -28,12 +28,16 @@
     "dist"
   ],
   "scripts": {
+    "load": "esno ./src/loader.ts",
     "build": "tsup",
     "dev": "tsup --watch"
   },
   "dependencies": {
     "@iconify/json": "^2.2.210",
+    "@iconify/tools": "^4.0.4",
     "@iconify/utils": "^2.1.23",
-    "fast-glob": "^3.3.2"
+    "deepmerge": "^4.3.1",
+    "fast-glob": "^3.3.2",
+    "unconfig": "^0.4.0"
   }
 }

@@ -1,11 +1,12 @@
 import type { Plugin, ViteDevServer } from 'vite'
 import { Features, transform } from 'lightningcss'
+import type { AttriconConfig } from '@attricon/core'
 import { AttriconGenerator } from '@attricon/core'
 import { isAttriconFile, resolveAttriconFile } from './utils'
 
-export default function AttriconGlobalPlugin(): Plugin[] {
+export default function AttriconGlobalPlugin(config?: AttriconConfig): Plugin[] {
   let server: ViteDevServer | undefined
-  const generator = new AttriconGenerator({ prefix: 'i-' })
+  const attricon = new AttriconGenerator(config)
   const tokens = new Set<string>()
   let cache = new Set<string>()
 
@@ -25,7 +26,7 @@ export default function AttriconGlobalPlugin(): Plugin[] {
       async load(id) {
         if (isAttriconFile(id)) {
           cssModule.add(id)
-          const css = await generator.generate(tokens)
+          const css = await attricon.generate(tokens)
           if (css) {
             cache = new Set(Array.from(tokens))
             return {
@@ -36,14 +37,15 @@ export default function AttriconGlobalPlugin(): Plugin[] {
         }
       },
       async transformIndexHtml(html) {
-        const token = await generator.scan(html)
+        const token = await attricon.scan(html)
         if (Array.isArray(token))
           token.forEach(t => tokens.add(t))
       },
       async transform(code, id) {
         if (id.includes('/.vite/'))
           return
-        const token = await generator.scan(code)
+
+        const token = await attricon.scan(code)
         if (Array.isArray(token))
           token.forEach(t => tokens.add(t))
       },
@@ -55,7 +57,7 @@ export default function AttriconGlobalPlugin(): Plugin[] {
       async transform(_code, _id, options) {
         if (cache.size && tokens.size !== cache.size) {
           for (const id of cssModule) {
-            const css = await generator.generate(tokens)
+            const css = await attricon.generate(tokens)
             cache = new Set(Array.from(tokens))
             const mod = await server!.moduleGraph.getModuleById(id)
             if (mod) {
@@ -85,14 +87,14 @@ export default function AttriconGlobalPlugin(): Plugin[] {
           return `#--attricon--{content: 1}`
       },
       async transformIndexHtml(html) {
-        const token = await generator.scan(html)
+        const token = await attricon.scan(html)
         if (Array.isArray(token))
           token.forEach(t => tokens.add(t))
       },
       async transform(code, id) {
         if (id.includes('/.vite/'))
           return
-        const token = await generator.scan(code)
+        const token = await attricon.scan(code)
         if (Array.isArray(token))
           token.forEach(t => tokens.add(t))
       },
@@ -106,7 +108,7 @@ export default function AttriconGlobalPlugin(): Plugin[] {
         for (const file of files) {
           const chunk = bundle[file]
           if (chunk.type === 'asset' && typeof chunk.source === 'string') {
-            const css = await generator.generate(tokens)
+            const css = await attricon.generate(tokens)
             chunk.source = chunk.source
               .replace(`#--attricon--{content:1}`, optimizeCss(css))
           }
